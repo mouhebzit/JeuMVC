@@ -1,5 +1,7 @@
 package controller;
 
+import view.VueJeux;
+
 public interface ControleurJeux {
     public void setVue(VueJeux vue);
 
