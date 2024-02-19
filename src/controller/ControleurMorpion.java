@@ -2,6 +2,7 @@ package controller;
 
 import model.ModeleGrille;
 import model.ModeleJeux;
+import utils.CoupException;
 import view.VueJeux;
 
 public class ControleurMorpion implements ControleurJeux {
@@ -16,7 +17,7 @@ public class ControleurMorpion implements ControleurJeux {
         this.modele = modele;
     }
 
-    public void gererSaisirCoup(){
+    public void gererSaisirCoup() throws CoupException {
         this.ligneChoisi =  this.vue.saisrligne();
         this.colonneChoisi =  this.vue.saisirColonne();
     }
@@ -27,17 +28,29 @@ public class ControleurMorpion implements ControleurJeux {
 
 
     public void jouerTour(){
-        this.gererSaisirCoup();
-        if (this.modele.coupValide(ligneChoisi,colonneChoisi)){
-            this.modele.jouerCaseValide(ligneChoisi,colonneChoisi);
-            if(this.modele.gagnant())
-                this.vue.afficherGagnant();
-            else
-                ((ModeleGrille)this.modele).prochainJoueur();
-        }
-        else {
+        try {
+            this.gererSaisirCoup();
+            if (this.modele.coupValide(ligneChoisi,colonneChoisi)){
+                this.modele.jouerCaseValide(ligneChoisi,colonneChoisi);
+                if(this.modele.gagnant())
+                    this.vue.afficherGagnant();
+                else
+                    ((ModeleGrille)this.modele).prochainJoueur();
+            }
+            else {
+                this.vue.afficherErreurSaisirCoup();
+            }
+        }catch (CoupException e){
+            System.out.println(e.toString());
             this.vue.afficherErreurSaisirCoup();
         }
 
+
+    }
+    public void demarrerJeu(){
+        this.vue.activerVue();
+        while (!this.modele.partieFinie()){
+            this.vue.saisrCoup();
+        }
     }
 }

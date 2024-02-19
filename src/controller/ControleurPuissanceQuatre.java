@@ -3,6 +3,7 @@ package controller;
 import model.ModeleGrille;
 import model.ModeleJeux;
 import model.ModelePuissanceQuatre;
+import utils.CoupException;
 import view.VueJeux;
 
 public class ControleurPuissanceQuatre implements ControleurJeux{
@@ -17,7 +18,7 @@ public class ControleurPuissanceQuatre implements ControleurJeux{
         this.modele = modele;
     }
 
-    public void gererSaisirCoup(){
+    public void gererSaisirCoup() throws CoupException{
         this.colonneChoisi =  this.vue.saisirColonne();
         this.ligneChoisi =  ((ModelePuissanceQuatre)this.modele).indiceLigneAuPlusBas(colonneChoisi);
     }
@@ -28,19 +29,30 @@ public class ControleurPuissanceQuatre implements ControleurJeux{
 
 
     public void jouerTour(){
-        this.gererSaisirCoup();
-        if (this.modele.coupValide(colonneChoisi,0)){
-            this.modele.jouerCaseValide(ligneChoisi,colonneChoisi);
-            if(this.modele.gagnant())
-                this.vue.afficherGagnant();
-            else
-                ((ModeleGrille)this.modele).prochainJoueur();
-        }
-        else {
+        try {
+            this.gererSaisirCoup();
+            if (this.modele.coupValide(ligneChoisi,colonneChoisi)){
+                this.modele.jouerCaseValide(ligneChoisi,colonneChoisi);
+                if(this.modele.gagnant())
+                    this.vue.afficherGagnant();
+                else
+                    ((ModeleGrille)this.modele).prochainJoueur();
+            }
+            else {
+                this.vue.afficherErreurSaisirCoup();
+            }
+        }catch (CoupException e){
+            System.out.println(e.toString());
             this.vue.afficherErreurSaisirCoup();
         }
 
-    }
 
+    }
+    public void demarrerJeu(){
+        this.vue.activerVue();
+        while (!this.modele.partieFinie()){
+            this.vue.saisrCoup();
+        }
+    }
 
 }

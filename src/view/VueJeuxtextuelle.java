@@ -5,11 +5,14 @@ import controller.ControleurPuissanceQuatre;
 
 
 import model.ModeleJeux;
+import utils.CoupException;
 import utils.Marqueur;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class VueJeuxtextuelle implements VueJeux,Observateur{
     private ControleurJeux controleur ;
@@ -29,9 +32,6 @@ public class VueJeuxtextuelle implements VueJeux,Observateur{
     @Override
     public void activerVue() {
         this.afficherGrille();
-        while (!this.modele.partieFinie()){
-            this.saisrCoup();
-        }
     }
 
     @Override
@@ -42,17 +42,35 @@ public class VueJeuxtextuelle implements VueJeux,Observateur{
     @Override
     public void afficherGrille() {
         Marqueur[][] grille = this.modele.getGrille();
-        System.out.println("Grille de " + "Morpion" + " :");
+        System.out.println("Grille du " + "jeu" + " :");
+        // Afficher les indices de colonne en haut
+        System.out.print("   "); // Espace pour aligner avec les indices de ligne
+        for (int j = 0; j < grille[0].length; j++) {
+            System.out.print(" " + j  + "  "); // Assurez-vous que l'espacement correspond à celui des cellules
+        }
+        System.out.println(); // Nouvelle ligne après les indices de colonne
+
+        // Calculer la longueur de la ligne de séparation en fonction de la largeur de la grille
+        String ligneSeparation = "   " + IntStream.range(0, grille[0].length)
+                .mapToObj(i -> "---")
+                .collect(Collectors.joining("+"));
+
         for (int i = 0; i < grille.length; i++) {
+            // Afficher l'indice de ligne avant chaque ligne
+            System.out.print(i  + " "); // Ajouter un espace pour aligner si nécessaire
+            if (i < 9) { // Pour l'alignement quand i a deux chiffres
+                System.out.print(" ");
+            }
             for (int j = 0; j < grille[i].length; j++) {
-                System.out.print(grille[i][j]);
+                // Afficher le contenu de la cellule
+                System.out.print(" " + grille[i][j] + " ");
                 if (j < grille[i].length - 1) {
-                    System.out.print(" | ");
+                    System.out.print("|");
                 }
             }
             System.out.println();
             if (i < grille.length - 1) {
-                System.out.println("---------");
+                System.out.println(ligneSeparation);
             }
         }
     }
@@ -63,19 +81,29 @@ public class VueJeuxtextuelle implements VueJeux,Observateur{
     }
 
     @Override
-    public Integer saisrligne() {
+    public Integer saisrligne() throws CoupException {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Saisir ligne: ");
-        int ligne = scanner.nextInt();
-        return ligne;
+
+        try {
+            int ligne = scanner.nextInt();
+            return ligne;
+        } catch (java.util.InputMismatchException e) {
+            throw new CoupException("Indice de la ligne doit etre un entier");
+        }
     }
 
     @Override
-    public Integer saisirColonne() {
+    public Integer saisirColonne() throws CoupException{
         Scanner scanner = new Scanner(System.in);
         System.out.print("Saisir colonne: ");
-        int colonne = scanner.nextInt();
-        return colonne;
+
+        try {
+            int colonne = scanner.nextInt();
+            return colonne;
+        } catch (java.util.InputMismatchException e) {
+            throw new CoupException("Indice de la colonne doit etre un entier");
+        }
     }
 
     @Override

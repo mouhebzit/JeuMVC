@@ -12,13 +12,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        /*ModeleJeux morpion = new ModelePuissanceQuatre(Joueur.JOUEUR1,Joueur.JOUEUR2);
-        ControleurJeux controleur = new ControleurPuissanceQuatre(morpion);
-        VueJeux vue = new VueJeuxtextuelle(controleur,morpion);
-
-        controleur.setVue(vue);
-        vue.activerVue();*/
-
         while (true) {
             int choice = getChoixMenu();
             switch (choice) {
@@ -28,7 +21,7 @@ public class Main {
                     VueJeux vue = new VueJeuxtextuelle(controleur,morpion);
 
                     controleur.setVue(vue);
-                    vue.activerVue();
+                    controleur.demarrerJeu();
                     break;
                 case 2:
                     ModeleJeux puissanceQuatre = new ModelePuissanceQuatre(Joueur.JOUEUR1,Joueur.JOUEUR2);
@@ -36,16 +29,15 @@ public class Main {
                     VueJeux vuePuissanceQuatre = new VueJeuxtextuelle(controleurPuissanceQuatre,puissanceQuatre);
 
                     controleurPuissanceQuatre.setVue(vuePuissanceQuatre);
-                    vuePuissanceQuatre.activerVue();
+                    controleurPuissanceQuatre.demarrerJeu();
                     break;
                 case 0:
                     System.exit(0);
                     break;
                 default:
-                    System.out.println("Invalid choice, please try again.");
+                    System.out.println("Choix non valide, veuillez réessayer.");
             }
         }
-
     }
     private static int getChoixMenu() {
         System.out.println("Choisi un jeu:");

@@ -85,11 +85,11 @@ public class ModelePuissanceQuatre extends ModeleGrille {
                 return x;
             }
         }
-        return null;
+        return 0;
     }
     @Override
-    public boolean coupValide(Integer y, Integer x) {
-        return y<tailledegrilleColonne && y>= 0 &&(this.grille[0][y] == Marqueur.VIDE) ;
+    public boolean coupValide(Integer x, Integer y) {
+        return y<tailledegrilleColonne && y>= 0 &&(this.grille[x][y] == Marqueur.VIDE) ;
     }
 
     public boolean gagnant() {
@@ -100,8 +100,8 @@ public class ModelePuissanceQuatre extends ModeleGrille {
     public boolean partieFinie() {
         if (this.gagnant())
             return true;
-        for (int i = 0; i < tailledegrilleLigne; i++) {
-            if (grille[i][0] == Marqueur.VIDE) return false; // si on trouve une colonne qui n'est pas rempli entierement on continue a jouer
+        for (int j = 0; j < tailledegrilleColonne; j++) {
+            if (grille[0][j] == Marqueur.VIDE) return false; // si on trouve une colonne qui n'est pas rempli entierement on continue a jouer
         }
         return true;
     }

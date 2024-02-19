@@ -1,5 +1,6 @@
 package controller;
 
+import utils.CoupException;
 import view.VueJeux;
 
 public interface ControleurJeux {
@@ -7,5 +8,7 @@ public interface ControleurJeux {
 
     public void jouerTour();
 
-    public void gererSaisirCoup();
+    public void gererSaisirCoup() throws CoupException;
+
+    public void demarrerJeu();
 }
