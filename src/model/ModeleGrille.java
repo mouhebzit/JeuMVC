@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public abstract class ModeleGrille implements ModeleJeux{
 	protected Joueur joueur1;
     protected Joueur joueur2;
-    //protected List<List<Marqueur>> grille;
     protected Joueur actueljoueur;
     protected ArrayList<Observateur> observateurs;
     public ModeleGrille(Joueur j1, Joueur j2) {

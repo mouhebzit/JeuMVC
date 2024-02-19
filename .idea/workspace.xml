@@ -5,14 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="94f32f01-716b-4178-9640-b35ebfdfe1ed" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControleurJeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControleurJeux.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControleurMorpion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControleurMorpion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/controller/ControleurPuissanceQuatre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/controller/ControleurPuissanceQuatre.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ModelePuissanceQuatre.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ModelePuissanceQuatre.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ModeleGrille.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ModeleGrille.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/view/Observateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Observateur.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/VueJeux.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/VueJeux.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/VueJeuxtextuelle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/VueJeuxtextuelle.java" afterDir="false" />
     </list>
@@ -47,7 +45,8 @@
     "git-widget-placeholder": "master",
     "last_opened_file_path": "/home/ing/Documents/JeuMVC",
     "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)"
+    "node.js.selected.package.eslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -58,7 +57,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1708342106948</updated>
-      <workItem from="1708342107948" duration="4864000" />
+      <workItem from="1708342107948" duration="8793000" />
     </task>
     <servers />
   </component>
